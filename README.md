@@ -186,17 +186,16 @@ Chaque entrée est une puce `-` en **trois parties séparées par `·`** :
 index.html            Coquille de la page (à ne pas éditer pour le contenu)
 reglement.md          ← LE CONTENU. C'est ici que vous travaillez.
 assets/
-  styles.css          Direction artistique « Le Code »
+  styles.css          Identité « Sunset » (océan, corail, bleu lagon)
   app.js              Chargement du .md, recherche, sommaire, thème…
   logo.png            Logo Coco FA (favicon + en-tête)
   key-art.jpg         Clé visuelle du serveur (bandeau d'accueil)
   og-image.png        Aperçu Discord (Open Graph, 1200×630)
-  fonts/              Polices Fraunces + Source Serif 4 (auto-hébergées)
+  fonts/              Manrope (auto-hébergée, aucune requête externe)
 ```
 
-Régénérer l'aperçu Discord (`og-image.png`) après un changement de nom/version :
-il est produit à partir d'un gabarit HTML capturé en 1200×630. Modifiez le titre/la
-version puis recapturez (n'importe quel navigateur en export 1200×630 convient).
+L'aperçu Discord (`og-image.png`, 1200×630) reprend le logo et la clé visuelle du
+serveur. Régénérez-le seulement si le nom, la version ou le nombre d'articles change.
 
 ---
 
