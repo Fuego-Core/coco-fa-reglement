@@ -1,191 +1,241 @@
 ---
 serveur: Coco FA
 version: 1.0
-maj: 2026-08-09
-accroche: Le roleplay d'abord. Ce règlement n'est pas là pour punir, mais pour protéger l'immersion de chacun.
-discord: https://discord.gg/cocofa
+maj: 2026-07-21
+accroche: Tout ce qu'il faut savoir pour vivre en ville. Lis-le une fois, joue-le tout le temps.
+discord: https://discord.gg/duuHzvwZ6J
 url: https://fuego-core.github.io/coco-fa-reglement/
+devise: Immersion · Cohérence · Conséquences
+pied: Le staff se réserve le droit de trancher tout cas non prévu.
 ---
 
-# 1. Règles générales
+# 00. La charte Coco {#charte}
+kicker: À lire en premier
 
-> Ces règles s'appliquent en toutes circonstances, en jeu comme sur le Discord. Nul n'est censé les ignorer : leur méconnaissance ne dispense jamais de sanction.
+> Coco FA est un serveur RolePlay semi-réaliste. On y vient pour vivre une histoire, pas pour gagner une partie. Trois mots résument l'esprit de la ville : immersion, cohérence, conséquences.
 
-## 1.1 Respect et savoir-vivre
-sanction: avertissement
-maj: 2026-08-09
+## 00.1 Le RP prime sur le gain
 
-Le respect est la seule règle qui ne se négocie pas. Aucune insulte, aucun propos rabaissant, aucune moquerie visant un joueur ou un membre du staff n'est tolérée, que ce soit en jeu, en vocal ou sur le Discord.
+Chaque action est jouée pour l'histoire qu'elle raconte, pas pour l'argent ou le loot qu'elle rapporte. Un beau scénario vaut mieux qu'un braquage rentable.
 
-Un désaccord se règle avec calme. Si une situation vous échappe, vous ouvrez un ticket — vous ne réglez jamais un conflit par l'agressivité.
+## 00.2 Chaque action a des conséquences
 
-## 1.2 Propos haineux et discriminatoires
-sanction: ban-def
+Tirer, mentir, trahir, aider : tout laisse une trace dans ta vie de personnage. Assume ce que tu joues.
 
-Tout propos raciste, antisémite, homophobe, transphobe, sexiste ou validiste entraîne un bannissement définitif immédiat, sans avertissement préalable et sans discussion.
+## 00.3 Le bon sens avant le texte
 
-Cette règle vaut aussi pour les pseudos, les noms de personnage, les plaques d'immatriculation et tout contenu partagé sur le serveur.
+Ce règlement ne peut pas tout prévoir. Là où il se tait, le fair-play et le bon sens tranchent — et le staff arbitre.
 
-## 1.3 Compte et identité
-sanction: ban-temp
+## 00.4 Rejoindre, c'est accepter
 
-Votre compte est personnel. Le partage de compte, le multi-compte destiné à contourner une sanction, et l'usurpation de l'identité d'un autre joueur ou d'un membre du staff sont interdits.
+En te connectant sur Coco FA, tu reconnais avoir lu ce règlement et t'engages à le respecter. « Je ne savais pas » n'est pas une excuse.
 
-Vous êtes responsable de tout ce qui se passe sous votre compte.
+# 01. Règlement Discord {#discord}
+kicker: La communauté
 
-## 1.4 Triche et exploitation de bugs
-sanction: ban-def
+> Le Discord est le hall d'entrée du serveur. On y garde le même respect qu'en ville.
 
-L'utilisation de tout logiciel tiers (cheat, menu, macro donnant un avantage) est sanctionnée d'un bannissement définitif.
+## 01.1 Respect de tous
+sanction: tolerance-zero
 
-L'exploitation volontaire d'un bug (money glitch, duplication, passe-muraille) est interdite. Un bug se signale au staff via un ticket — il ne s'exploite pas.
+Aucune insulte, aucun harcèlement, aucune discrimination. Les désaccords se règlent poliment.
 
-# 2. Le roleplay
+## 01.2 Aucun contenu choquant
+sanction: bannissable
 
-> Coco FA est un serveur d'immersion. Chaque action de votre personnage doit avoir un sens dans l'histoire que vous racontez.
+Pas de contenu NSFW, violent, haineux ou illégal, dans aucun salon ni en message privé.
 
-## 2.1 Rester dans son personnage
-sanction: avertissement
-maj: 2026-08-09
+## 01.3 Pas de publicité sauvage
+sanction: bannissable
 
-Vous incarnez un personnage en permanence tant que vous êtes en jeu. Le hors-roleplay (parler de la « vraie vie », de vos stats, du jeu en tant que jeu) se limite au strict nécessaire et se signale par le préfixe **//** en cas d'urgence technique.
+Aucune promotion d'un autre serveur, produit ou service sans l'accord de la direction.
 
-Un personnage a une histoire, une personnalité et des limites cohérentes. On ne change pas de comportement selon l'avantage du moment.
+## 01.4 Identité correcte
 
-## 2.2 Le RP colle à la réalité
-sanction: avertissement
+Pseudo et avatar lisibles et corrects. Pas d'usurpation d'un membre du staff.
 
-Vos actions doivent rester crédibles. Votre personnage ressent la peur, la douleur et l'instinct de survie. Face à une arme braquée sur lui, il coopère — il ne se comporte pas comme s'il avait plusieurs vies.
+## 01.5 Le bon salon au bon endroit
 
-## 2.3 Metagaming
-sanction: ban-temp
-maj: 2026-08-09
+Chaque salon a son usage : lis les descriptions et poste au bon endroit.
 
-Le metagaming, c'est utiliser en jeu une information que votre personnage ne peut pas connaître : une information vue sur un stream, entendue sur un autre canal vocal, ou lue sur le Discord.
+## 01.6 Le support passe par les tickets
 
-Votre personnage ne sait que ce qu'il a vu et entendu **en jeu**. Utiliser le stream d'un autre joueur pour le retrouver est une faute grave.
+Pour une question, un signalement ou un litige : ouvre un ticket. Ne harcèle pas le staff en MP.
 
-## 2.4 Powergaming
-sanction: ban-temp
+## 01.7 Pas de spam ni de flood
 
-Le powergaming, c'est imposer une action sans laisser à l'autre la possibilité de réagir, ou attribuer à son personnage des capacités irréalistes.
+Pas de messages répétés, de mentions abusives ni de réactions en masse.
 
-On n'écrit pas l'action de l'adversaire à sa place. On lui laisse toujours le temps de répondre.
+## 01.8 Les bugs se signalent en privé
+sanction: bannissable
 
-## 2.5 Le respect de la valeur de la vie
-sanction: avertissement
-maj: 2026-08-09
+Une faille ou un bug se transmet discrètement au staff, jamais en public — et surtout jamais exploité.
 
-Votre personnage tient à sa vie. Il ne prend pas de risques absurdes, ne provoque pas trois hommes armés pour « voir », ne se jette pas sous les balles. Le non-respect de la valeur de la vie casse l'immersion de tous.
+## 01.9 Le français, langue commune
 
-# 3. Violence et conflits
+Les échanges publics se font en français pour que tout le monde suive.
 
-> La violence existe dans le RP, mais elle se justifie toujours. Un conflit doit avoir un contexte, un déroulé et des conséquences.
+# 02. Règles générales {#general}
+kicker: Les fondamentaux
 
-## 3.1 RDM — Random Deathmatch
-sanction: ban-temp
-maj: 2026-08-09
+> Elles s'appliquent à tout le monde, tout le temps, quel que soit ton personnage.
 
-Le RDM, c'est tuer ou blesser un joueur sans aucune raison roleplay valable. Toute agression doit être précédée d'une interaction : une menace, un motif, une histoire.
+## 02.1 Reste dans ton personnage
 
-Tirer sur quelqu'un « parce qu'il passait là » est un RDM, sanctionné sévèrement.
+Une fois en ville, tu ES ton personnage. Le hors-RP (HRP) en jeu casse l'immersion de tous : garde-le pour le Discord.
 
-## 3.2 VDM — Vehicle Deathmatch
-sanction: ban-temp
+## 02.2 Micro obligatoire et clair
 
-Utiliser son véhicule comme une arme sans contexte roleplay (écraser des joueurs volontairement, foncer dans la foule) est interdit et assimilé au RDM.
+Un micro fonctionnel est indispensable. La voix est le cœur du RP sur Coco FA.
 
-## 3.3 CarKill
-sanction: avertissement
+## 02.3 Zéro triche, zéro exploit
+sanction: bannissable
 
-Descendre de son véhicule pour tirer immédiatement, ou utiliser la voiture uniquement comme bouclier pour un gunfight, brise la crédibilité de la scène. Un affrontement se joue à pied et en RP.
+Cheat, macro, mod menu, exploit de bug ou d'économie : bannissement immédiat et définitif. Aucune tolérance.
 
-## 3.4 Règle de survie (New Life Rule)
-sanction: avertissement
-maj: 2026-08-09
+## 02.4 Signale, n'exploite pas
+sanction: bannissable
 
-Quand votre personnage meurt et réapparaît à l'hôpital, il perd le souvenir des instants ayant précédé sa mort. Il ne retourne pas sur les lieux, ne se venge pas, ne reconnaît pas ses agresseurs.
+Tu tombes sur un bug ? Tu le signales en ticket. En profiter est sanctionné comme de la triche.
 
-S'il est réanimé sur place par les secours, il conserve sa mémoire et la scène continue.
+## 02.5 Respecte le joueur derrière l'écran
+sanction: tolerance-zero
 
-# 4. Vie criminelle
+Un conflit RP ne justifie jamais l'irrespect réel. On peut se détester en jeu et se respecter en vrai.
 
-> Le crime fait partie du décor, mais il obéit à des règles pour rester un jeu équilibré et amusant pour les deux camps.
-
-## 4.1 Braquages et otages
-sanction: ban-temp
-maj: 2026-08-09
-
-Un otage est un joueur, pas un objet. On ne braque pas sans négociation possible. Le nombre de braqueurs, la durée et les conditions sont encadrés par le contexte RP : pas de braquage à vingt, pas de prise d'otage éclair pour forcer un butin.
-
-Un otage doit toujours pouvoir espérer s'en sortir. Le tuer sans raison après une négociation aboutie est une faute.
-
-## 4.2 Zones et interdits de conflit
-sanction: kick
-maj: 2026-08-09
-
-Certaines zones sont neutres : hôpital, commissariat central, points de spawn, zones de départ nouveau joueur. Aucun conflit armé, aucune agression ni prise d'otage n'y est autorisé.
-
-Camper la sortie d'un lieu neutre pour piéger un joueur revient à violer cette règle.
-
-## 4.3 Cohérence des groupes criminels
+## 02.6 Le RP sensible se consent
 sanction: avertissement
 
-Une organisation criminelle a un territoire, des codes et une histoire. On ne s'improvise pas cartel entre deux connexions. Les grosses opérations (guerres de gangs, attaques coordonnées) se déclarent au staff pour être encadrées.
+Torture, agression grave ou scène dérangeante : uniquement avec l'accord clair des joueurs concernés.
 
-# 5. Staff, sanctions et recours
+## 02.7 Soigne ta qualité de jeu
 
-> Le staff est là pour arbitrer, pas pour jouer contre vous. Une décision se conteste dans le calme et par les voies prévues.
+Nom cohérent, tenue crédible, réactions justes. L'immersion se construit ensemble, ne la sabote pas.
 
-## 5.1 Respect des décisions du staff
-sanction: kick
-maj: 2026-08-09
+# 03. Notions RP {#notions}
+kicker: Le vocabulaire
 
-Une consigne du staff en jeu s'applique immédiatement. On la discute **après**, au calme, dans un ticket — jamais en la contestant en pleine scène. Le refus manifeste d'obtempérer est sanctionné.
+> Les termes qu'on emploie tous les jours en ville. Les connaître, c'est éviter la moitié des litiges.
 
-## 5.2 Ouverture de ticket
+## 03.1 HRP / IC
+
+Hors-RP (la vraie vie, le Discord) vs In-Character (ton personnage en ville). Ne mélange jamais les deux.
+
+## 03.2 MetaGaming (MG)
+
+Utiliser en jeu une information obtenue hors-RP (Discord, stream, message privé). Interdit.
+
+## 03.3 PowerGaming (PG)
+
+Imposer une action sans laisser de chance de réponse, ou jouer un personnage invincible/irréaliste.
+
+## 03.4 RDM
+
+Random Death Match : tuer sans raison ni scénario RP. Sanctionné lourdement.
+
+## 03.5 VDM
+
+Vehicle Death Match : écraser volontairement un joueur avec un véhicule sans contexte RP.
+
+## 03.6 FearRP
+
+Jouer la peur : sous la menace d'une arme, tu crains pour ta vie et tu obéis comme dans la réalité.
+
+## 03.7 NLR
+
+New Life Rule : après ta mort, ton personnage oublie les circonstances et ne revient pas sur la zone.
+
+## 03.8 Combat Log
+
+Se déconnecter en pleine scène pour échapper aux conséquences. Interdit et tracé.
+
+# 04. Vie légale & citoyenne {#legal}
+kicker: La ville au quotidien
+
+> Métiers, conduite, activités et rapports avec les forces de l'ordre.
+
+## 04.1 Joue ta vie (FearRP)
+
+Une arme braquée sur toi, c'est ta vie en jeu : tu obéis, tu négocies, tu as peur. Tu n'es pas un héros de film.
+
+## 04.2 La route a ses règles
+
+Conduis de façon cohérente avec ta situation RP. Un citoyen lambda ne roule pas comme un pilote de rallye en pleine ville.
+
+## 04.3 Les activités sont ouvertes à tous
+
+La pêche, la chasse et la chasse au trésor sont des activités libres : n'importe qui peut les pratiquer, même en ayant déjà un métier.
+
+## 04.4 Pas d'abus économique
+sanction: bannissable
+
+Exploiter une faille de prix, de vente ou de duplication est assimilé à de la triche.
+
+## 04.5 Respect mutuel avec les forces de l'ordre
+
+On respecte la police en RP, et la police respecte les citoyens. Le rapport de force se joue, il ne s'impose pas.
+
+# 05. Vie illégale {#illegal}
+kicker: Le côté sombre
+
+> Braquages, gangs, trafics : le crime est autorisé s'il est joué. Le rush et le kill gratuit, non.
+
+## 05.1 Un braquage se joue, il ne se rush pas
 sanction: avertissement
 
-Toute réclamation, tout signalement et toute contestation passent par un ticket sur le Discord. Un ticket abusif, répété ou mensonger est lui-même sanctionnable.
+Scénario, prise d'otage cohérente, tension : un braquage est une scène, pas un bouton à presser pour de l'argent.
 
-# 6. Barème des sanctions
+## 05.2 Assez de policiers en service
 
-> Le barème est une grille de référence, pas un tarif automatique. Le staff module la sanction selon le contexte, la gravité et les circonstances.
+Les gros braquages exigent un nombre minimum de policiers en service, pour que la confrontation ait du sens.
 
-## 6.1 Les quatre niveaux
-maj: 2026-08-09
+## 05.3 Une raison RP à toute agression
+sanction: bannissable
 
-Chaque règle porte le niveau de sanction encouru **en première infraction**. La récidive fait monter d'un cran.
+Pas de RDM. Toute violence doit découler d'une histoire : dette, territoire, vengeance, deal qui tourne mal.
 
-| Niveau | Ce que cela signifie |
-| --- | --- |
-| Avertissement | Rappel officiel consigné. Trois avertissements valent un kick. |
-| Kick | Exclusion immédiate de la session. Le joueur peut se reconnecter. |
-| Ban temporaire | Bannissement de 1 à 30 jours selon la gravité. |
-| Ban définitif | Exclusion sans retour possible. Réservé aux fautes les plus graves. |
+## 05.4 Gangs et crews : jouez la rivalité
+sanction: avertissement
 
-## 6.2 Circonstances aggravantes
-maj: 2026-08-09
+Territoires, alliances et guerres se construisent en RP. Le kill de masse sans scénario n'est pas du gangstER, c'est du DM.
 
-Une sanction est alourdie lorsque :
+## 05.5 Respecte le New Life Rule
 
-- la faute est **répétée** malgré des avertissements ;
-- elle est **préméditée** ou organisée en groupe ;
-- elle vise à **nuire** délibérément à l'expérience d'autres joueurs ;
-- elle s'accompagne d'un **mensonge** au staff ou d'une destruction de preuves.
+Une fois mort et réanimé, tu oublies qui t'a tué et pourquoi, et tu ne retournes pas sur les lieux de ta mort.
 
-## 6.3 Circonstances atténuantes
-maj: 2026-08-09
+## 05.6 Pas de vol sur un joueur déconnecté
+sanction: bannissable
 
-Une sanction peut être allégée lorsque le joueur reconnaît sa faute, coopère avec le staff, ou lorsqu'il s'agit manifestement d'une première erreur de bonne foi.
+On ne vide pas le véhicule ni les poches d'un joueur hors-ligne. On joue avec des gens, pas contre des absents.
 
-## 6.4 Contester une sanction
-maj: 2026-08-09
+## 05.7 Reste crédible
 
-Une sanction se conteste **uniquement** via un ticket « Contestation » sur le Discord, dans les **7 jours**. Indiquez la date, la sanction reçue et vos éléments (clips, captures). Un membre du staff non impliqué réexamine le dossier. Sa décision est définitive.
+Pas de sur-armement, pas de gilet infini, pas de scène irréaliste. Le crime immersif fait peur ; le crime cheaté fait fuir.
+
+# 06. Staff & sanctions {#staff}
+kicker: L'arbitrage
+
+> Le staff n'est pas un adversaire : c'est l'arbitre qui protège l'expérience de tous.
+
+## 06.1 Un litige = un ticket avec preuves
+
+Un problème avec un joueur ? Ouvre un ticket, calmement, avec tes clips à l'appui. Les preuves font la décision.
+
+## 06.2 L'échelle des sanctions
+
+Selon la gravité et la récidive : rappel à l'ordre → avertissement → kick → bannissement temporaire → bannissement définitif.
+
+## 06.3 Des sanctions proportionnées et tracées
+
+Chaque sanction est justifiée et enregistrée. Le staff rend des comptes, il ne punit pas au hasard.
+
+## 06.4 Le désaccord se règle en ticket
+sanction: tolerance-zero
+
+Tu contestes une décision ? On en discute en ticket, sans esclandre public. L'irrespect envers le staff aggrave la sanction.
 
 # @changelog Journal des modifications
 
-> Ce que le règlement a changé depuis votre dernière lecture. Les règles modifiées récemment portent le marqueur « Modifié ».
+> Ce qui a changé depuis ta dernière lecture. Les règles modifiées récemment portent le marqueur « Modifié ».
 
-- 2026-08-09 · v1.0 · Publication initiale du règlement Coco FA.
+- 2026-07-21 · v1.0 · Publication du règlement officiel Coco FA (7 chapitres, 44 articles).

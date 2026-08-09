@@ -7,7 +7,7 @@ Site statique du règlement officiel du serveur RolePlay FiveM **Coco FA**.
 > Le site lit ce fichier et le met en page automatiquement.
 
 - **Recherche instantanée** (`Ctrl` / `⌘` + `K`), floue, sur le titre et le corps des règles.
-- **Numérotation stable et citable** : chaque règle a une ancre (`#regle-4-2`) et un bouton « copier le lien ».
+- **Numérotation stable et citable** : chaque règle a une ancre (`#regle-05-3`) et un bouton « copier le lien ».
 - **Badges de sanction** colorés, **barème** récapitulatif, **changelog** daté, marqueur « Modifié ».
 - **Thème sombre / clair** mémorisé, mobile d'abord, accessible, imprimable proprement.
 - HTML / CSS / JS **vanilla**, zéro framework, zéro CDN (polices auto-hébergées).
@@ -35,10 +35,12 @@ Tout en haut du fichier, entre deux lignes `---` :
 ---
 serveur: Coco FA
 version: 1.0
-maj: 2026-08-09
-accroche: Le roleplay d'abord. Ce règlement protège l'immersion de chacun.
-discord: https://discord.gg/cocofa
+maj: 2026-07-21
+accroche: Tout ce qu'il faut savoir pour vivre en ville. Lis-le une fois, joue-le tout le temps.
+discord: https://discord.gg/duuHzvwZ6J
 url: https://fuego-core.github.io/coco-fa-reglement/
+devise: Immersion · Cohérence · Conséquences
+pied: Le staff se réserve le droit de trancher tout cas non prévu.
 ---
 ```
 
@@ -48,7 +50,10 @@ url: https://fuego-core.github.io/coco-fa-reglement/
 | `version` | Numéro de version, affiché en évidence sur l'accueil. |
 | `maj` | Date de dernière mise à jour, format `AAAA-MM-JJ`. |
 | `accroche` | La phrase d'esprit affichée sous le grand titre. |
-| `discord`, `url` | Informatifs (repris dans le pied de page / partage). |
+| `discord` | Lien du Discord : alimente le bouton « Rejoindre le Discord ». |
+| `url` | Adresse publique du site (partage). |
+| `devise` | Devise affichée en pied de page. |
+| `pied` | Mention légale affichée sous la devise. |
 
 ---
 
@@ -57,48 +62,54 @@ url: https://fuego-core.github.io/coco-fa-reglement/
 Un chapitre commence par un titre de niveau 1 (`#`) **numéroté** :
 
 ```markdown
-# 1. Règles générales
+# 02. Règles générales {#general}
+kicker: Les fondamentaux
 
 > Texte d'introduction du chapitre (facultatif). La citation `>` s'affiche en exergue.
 ```
 
-- Le numéro (`1.`) devient le « Chapitre 01 » affiché à l'écran.
-- Tout ce qui suit le titre, **avant la première règle**, sert d'introduction de chapitre.
+- Le numéro (`02.`) s'affiche dans une pastille à côté du chapitre.
+- **`{#general}`** fixe l'ancre du chapitre. **Ne la changez pas** : c'est elle qui
+  fait que les liens déjà partagés (`…/#charte`, `…/#illegal`, …) continuent de marcher.
+- `kicker:` est la petite accroche affichée au-dessus du titre (facultative).
+- Tout ce qui suit, **avant la première règle**, sert d'introduction de chapitre.
 
 ---
 
 ## 4. Les règles — le format à connaître
 
-Une règle est un titre de niveau 2 (`##`) commençant par son **numéro** (`1.1`, `4.2`…),
+Une règle est un titre de niveau 2 (`##`) commençant par son **numéro** (`00.1`, `05.3`…),
 suivi de lignes de **métadonnées**, puis du **corps** :
 
 ```markdown
-## 4.2 Zones et interdits de conflit
-sanction: kick
-maj: 2026-08-09
+## 05.3 Une raison RP à toute agression
+sanction: bannissable
+maj: 2026-07-21
 
-Certaines zones sont neutres : hôpital, commissariat, points de spawn.
-Aucun conflit armé n'y est autorisé.
+Pas de RDM. Toute violence doit découler d'une histoire : dette, territoire,
+vengeance, deal qui tourne mal.
 
-- Pas de prise d'otage dans ces zones.
-- Camper la sortie revient à violer cette règle.
+- Une agression sans contexte est un RDM.
+- Le staff juge sur le scénario, pas sur le résultat.
 ```
 
 Ce que fait le site avec ça :
 
-- **`4.2`** → numéro affiché **et** ancre `#regle-4-2` (lien direct copiable).
+- **`05.3`** → numéro affiché **et** ancre `#regle-05-3` (lien direct copiable).
 - **`sanction:`** → badge coloré (voir le tableau ci-dessous).
 - **`maj:`** → date de dernière modification de *cette* règle (sert au marqueur « Modifié »).
 - Le **corps** accepte le Markdown courant (voir §6).
 
 ### Les valeurs de `sanction`
 
-| À écrire | Badge affiché | Couleur |
-| --- | --- | --- |
-| `avertissement` | Avertissement | bleu (le plus léger) |
-| `kick` | Kick | ambre |
-| `ban-temp` | Ban temporaire | orange |
-| `ban-def` | Ban définitif | rouge (le plus grave) |
+| À écrire | Badge affiché | Couleur | Pour quoi |
+| --- | --- | --- | --- |
+| `avertissement` | Avertissement | ambre | écart de RP |
+| `tolerance-zero` | Tolérance zéro | orange | respect & comportement |
+| `bannissable` | Bannissable | rouge | triche, exploit, RDM |
+
+Trois niveaux complémentaires existent si vous voulez affiner un jour :
+`kick`, `ban-temp`, `ban-def`.
 
 > La couleur suit une rampe **froid → chaud = léger → grave**, lisible d'un coup d'œil
 > sans même lire le mot. La ligne `sanction:` est **facultative** (utile pour le barème,
@@ -107,8 +118,11 @@ Ce que fait le site avec ça :
 ### Ajouter une règle
 
 Copiez un bloc `##` existant, changez le numéro, le titre, la sanction et le texte.
-Les numéros n'ont pas besoin de se suivre parfaitement, mais gardez-les **stables** :
-un lien partagé sur Discord pointe vers un numéro précis.
+Gardez le format à deux chiffres du chapitre (`05.8`, pas `5.8`) pour rester cohérent.
+
+⚠️ Les numéros doivent rester **stables** : un lien collé sur Discord pointe vers un
+numéro précis (`#regle-05-3`). Renuméroter une règle casse les liens déjà partagés.
+Pour supprimer une règle, préférez la réécrire plutôt que décaler toutes les suivantes.
 
 ### Le marqueur « Modifié »
 
@@ -126,10 +140,9 @@ Fenêtre par défaut : 60 jours (réglable via `RECENT_DAYS` dans `assets/app.js
 
 ### Barème des sanctions
 
-C'est un chapitre normal (ici `# 6. Barème des sanctions`). Ses règles peuvent ne pas
-porter de `sanction:`. Vous pouvez y placer un **tableau** (voir §6) pour la grille,
-et rédiger librement les **circonstances aggravantes**, **atténuantes** et la
-**procédure de contestation**.
+C'est un chapitre normal (ici `# 06. Staff & sanctions {#staff}`). Ses règles peuvent
+ne pas porter de `sanction:`. Vous pouvez y placer un **tableau** (voir §6) pour
+détailler la grille, les circonstances aggravantes et la procédure de contestation.
 
 ### Changelog
 
@@ -140,8 +153,8 @@ Un chapitre spécial, marqué `@changelog` :
 
 > Ce qui a changé depuis votre dernière lecture (facultatif).
 
-- 2026-08-09 · v1.0 · Publication initiale du règlement.
-- 2026-09-01 · v1.1 · Précision sur les zones neutres (règle 4.2).
+- 2026-07-21 · v1.0 · Publication du règlement officiel.
+- 2026-09-01 · v1.1 · Précision sur les gangs et crews (règle 05.4).
 ```
 
 Chaque entrée est une puce `-` en **trois parties séparées par `·`** :
@@ -175,8 +188,9 @@ reglement.md          ← LE CONTENU. C'est ici que vous travaillez.
 assets/
   styles.css          Direction artistique « Le Code »
   app.js              Chargement du .md, recherche, sommaire, thème…
-  favicon.svg
-  og-image.png        Aperçu Discord (Open Graph)
+  logo.png            Logo Coco FA (favicon + en-tête)
+  key-art.jpg         Clé visuelle du serveur (bandeau d'accueil)
+  og-image.png        Aperçu Discord (Open Graph, 1200×630)
   fonts/              Polices Fraunces + Source Serif 4 (auto-hébergées)
 ```
 
@@ -203,17 +217,14 @@ python3 -m http.server 8000
 
 ## 9. Déploiement (GitHub Pages)
 
-Le site est publié à la racine du dépôt — aucune étape de build.
+Le site est **déjà en ligne** et publié à la racine du dépôt — aucune étape de build,
+aucun workflow. GitHub Pages sert la branche `main` (dossier `/ (root)`).
 
-**Option A — Depuis une branche (le plus simple)**
-1. Fusionnez le contenu sur `main`.
-2. Dépôt → **Settings → Pages**.
-3. *Build and deployment* → **Source : Deploy from a branch**.
-4. Branche : **`main`**, dossier : **`/ (root)`** → **Save**.
+**Pour mettre le règlement à jour : modifiez `reglement.md` et poussez sur `main`.**
+Le site se régénère tout seul en une minute environ.
 
-**Option B — Via GitHub Actions**
-Le workflow `.github/workflows/pages.yml` déploie automatiquement à chaque push sur
-`main`. Il suffit de régler **Settings → Pages → Source : GitHub Actions**.
+Si Pages devait être reconfiguré un jour : *Settings → Pages → Build and deployment →
+Source : Deploy from a branch → `main` / `/ (root)`*.
 
 **URL du site :**
 
@@ -221,4 +232,5 @@ Le workflow `.github/workflows/pages.yml` déploie automatiquement à chaque pus
 https://fuego-core.github.io/coco-fa-reglement/
 ```
 
-Un lien direct vers une règle : `https://fuego-core.github.io/coco-fa-reglement/#regle-4-2`
+Lien direct vers une règle : `…/coco-fa-reglement/#regle-05-3`
+Lien direct vers un chapitre : `…/coco-fa-reglement/#illegal`

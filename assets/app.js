@@ -7,10 +7,13 @@
 
   var RECENT_DAYS = 60; // fenêtre du marqueur « Modifié »
   var SANCTIONS = {
-    'avertissement': { label: 'Avertissement', cls: 'avertissement' },
-    'kick':          { label: 'Kick',          cls: 'kick' },
-    'ban-temp':      { label: 'Ban temporaire', cls: 'ban-temp' },
-    'ban-def':       { label: 'Ban définitif',  cls: 'ban-def' }
+    'avertissement':  { label: 'Avertissement',  cls: 'avertissement' },
+    'tolerance-zero': { label: 'Tolérance zéro', cls: 'tolerance-zero' },
+    'bannissable':    { label: 'Bannissable',    cls: 'bannissable' },
+    // niveaux complémentaires, utilisables au besoin
+    'kick':           { label: 'Kick',           cls: 'kick' },
+    'ban-temp':       { label: 'Ban temporaire', cls: 'ban-temp' },
+    'ban-def':        { label: 'Ban définitif',  cls: 'ban-def' }
   };
 
   var $  = function (s, c) { return (c || document).querySelector(s); };
@@ -147,14 +150,19 @@
           cur = null; mode = 'changelog'; continue;
         }
         var title = h1[2].trim();
+        // ancre explicite : « # 00. La charte {#charte} » — préserve les liens déjà partagés
+        var slugM = /\{#([A-Za-z0-9_-]+)\}\s*$/.exec(title);
+        var explicitId = slugM ? slugM[1] : null;
+        if(slugM) title = title.slice(0, slugM.index).trim();
         var numM = /^(\d+)\.\s+(.*)$/.exec(title);
         cur = {
           num: numM ? numM[1] : '',
           title: numM ? numM[2] : title,
-          id: 'cat-' + (numM ? numM[1] : slug(title)),
+          id: explicitId || ('cat-' + (numM ? numM[1] : slug(title))),
+          kicker: null,
           introLines: [], rules: []
         };
-        cats.push(cur); mode = 'cat-intro'; continue;
+        cats.push(cur); mode = 'cat-meta'; continue;
       }
       var h2 = /^##\s+(\d+(?:\.\d+)+)\s+(.*)$/.exec(line);
       if(h2 && cur){
@@ -181,6 +189,12 @@
         mode = 'rule-body'; curRule.bodyLines.push(line); continue;
       }
       if(mode === 'rule-body' && curRule){ curRule.bodyLines.push(line); continue; }
+      if(mode === 'cat-meta' && cur){
+        var cm = /^(kicker)\s*:\s*(.*)$/.exec(line);
+        if(cm){ cur.kicker = cm[2].trim(); continue; }
+        if(!line.trim()) continue;
+        mode = 'cat-intro'; cur.introLines.push(line); continue;
+      }
       if(mode === 'cat-intro' && cur){ cur.introLines.push(line); continue; }
     }
     flushRule();
@@ -206,6 +220,12 @@
     $('#heroVersion').textContent = 'version ' + (meta.version || '—');
     $('#heroDate').textContent = 'mis à jour le ' + (meta.maj ? frDate(meta.maj) : '—');
     document.title = 'Règlement — ' + (meta.serveur || 'Coco FA');
+    if(meta.discord){
+      var dc = $('#heroDiscord');
+      if(dc){ dc.href = meta.discord; dc.hidden = false; }
+    }
+    if(meta.devise) $('#footDevise').textContent = (meta.serveur || 'Coco FA') + ' — ' + meta.devise;
+    if(meta.pied) $('#footNote').textContent = meta.pied;
 
     // Marqueur "Modifié" : rules touchées lors de la dernière révision
     var majs = {};
@@ -219,11 +239,15 @@
 
     data.cats.forEach(function(cat){
       var kicker = cat.num ? ('0'+cat.num).slice(-2) : '';
-      tocHtml += '<div class="toc__cat"><p class="toc__cat-title">'+(cat.num?cat.num+'. ':'')+esc(cat.title)+'</p>';
+      tocHtml += '<div class="toc__cat"><a class="toc__cat-title" href="#'+esc(cat.id)+'">'
+        + (cat.num?cat.num+'. ':'')+esc(cat.title)+'</a>';
 
       rulesHtml += '<section class="rule-cat reveal" id="'+esc(cat.id)+'">';
       rulesHtml += '<header class="rule-cat__head"><span class="anchor-target" id="'+esc(cat.id)+'-a"></span>';
-      if(kicker) rulesHtml += '<span class="rule-cat__kicker">Chapitre '+esc(kicker)+'</span>';
+      rulesHtml += '<span class="rule-cat__kicker">'
+        + (kicker ? '<span class="rule-cat__chap">'+esc(kicker)+'</span>' : '')
+        + (cat.kicker ? esc(cat.kicker) : (kicker ? 'Chapitre '+esc(kicker) : ''))
+        + '</span>';
       rulesHtml += '<h2 class="rule-cat__title">'+esc(cat.title)+'</h2>';
       var intro = cat.introLines.join('\n').trim();
       if(intro) rulesHtml += '<div class="rule-cat__intro">'+mdBlocks(intro)+'</div>';
@@ -265,7 +289,7 @@
     // Changelog
     if(data.changelog){
       var cl = data.changelog;
-      tocHtml += '<div class="toc__cat"><p class="toc__cat-title">Journal</p>'
+      tocHtml += '<div class="toc__cat"><a class="toc__cat-title" href="#changelog">Journal</a>'
         + '<a class="toc__link" href="#changelog" data-target="changelog"><span>'+esc(cl.title)+'</span></a></div>';
       rulesHtml += '<section class="rule-cat reveal" id="changelog"><header class="rule-cat__head">'
         + '<span class="anchor-target" id="changelog-a"></span>'
@@ -341,7 +365,12 @@
   function setupScrollSpy(){
     var links = {};
     $$('#tocNav .toc__link').forEach(function(a){ links[a.getAttribute('data-target')] = a; });
-    var targets = $$('.rule[id], .rule-cat[id]');
+    // On n'observe que les éléments réellement présents dans le sommaire :
+    // les sections de chapitre, bien plus hautes, gagneraient toujours et
+    // empêcheraient tout surlignage.
+    var targets = $$('.rule[id]').filter(function(el){ return links[el.id]; });
+    var changelogEl = document.getElementById('changelog');
+    if(changelogEl && links['changelog']) targets.push(changelogEl);
     if(!('IntersectionObserver' in window) || !targets.length) return;
     var visible = {};
     var obs = new IntersectionObserver(function(entries){
