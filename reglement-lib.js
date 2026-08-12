@@ -1,9 +1,9 @@
 // Coco FA — parsing + rendu Markdown du règlement (porté de assets/app.js du repo)
 export const T = {
-  ocean: '#101724', ocean2: '#0B111B', lift: '#1B2534', card: '#161F2D', inset: '#0D131D',
-  hair: 'rgba(255,255,255,.08)', hair2: 'rgba(255,255,255,.14)',
-  coral: '#FF8A4A', mango: '#FFB257', cool: '#41A0EE',
-  t1: '#FAF6F3', t2: '#C2BAB5', t3: '#8A8480', t4: '#6B6663'
+  ocean: '#14161A', ocean2: '#0D0E11', lift: '#1F2229', card: '#1F2229', inset: '#0D0E11',
+  hair: 'rgba(255,255,255,.09)', hair2: 'rgba(255,255,255,.14)',
+  coral: '#E09A5A', mango: '#F0BC8C', cool: '#1F7FD8',
+  t1: '#ECEAE6', t2: '#9AA0A8', t3: '#9AA0A8', t4: '#6B7178'
 };
 
 export const SANCTIONS = {
