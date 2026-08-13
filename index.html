@@ -28,6 +28,72 @@
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/logo.png">
 
+<!-- Confort de lecture au téléphone.
+     Le balisage porte ses styles en ligne et React les re-sérialise
+     (« minmax(0px, 1fr) », avec espaces) : les sélecteurs ci-dessous
+     visent la forme rendue, pas celle écrite dans le gabarit. -->
+<style>
+  /* Le grand numéro de chapitre dérive de ±56px et débordait de l'écran. */
+  html { overflow-x: clip; }
+
+  @media (max-width: 760px) {
+    /* Accueil : une seule colonne — à deux, le titre était coupé. */
+    [style*="grid-template-columns: minmax(0px, 1.35fr)"] {
+      grid-template-columns: 1fr !important;
+      gap: 22px !important;
+      align-items: start !important;
+    }
+    /* On entre dans le règlement plus vite. */
+    section#top { padding-top: 104px !important; }
+
+    /* Corps : la colonne du sommaire ne réserve plus d'espace. */
+    [style*="grid-template-columns: auto minmax(0px, 1fr)"] {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+    }
+
+    /* Règles : le numéro ne prend plus 4.6rem de large. C'est ce qui
+       étranglait le texte à ~230px sur un écran de 390. */
+    [style*="grid-template-columns: 4.6rem"] {
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      gap: 0 14px !important;
+      padding-left: 2px !important;
+      padding-right: 2px !important;
+    }
+
+    /* Journal des modifications : même principe. */
+    [style*="grid-template-columns: 6rem 4rem"] {
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      gap: 2px 12px !important;
+    }
+
+    /* En-tête de chapitre : le grand numéro décoratif est purement
+       ornemental, il vole de la place et pousse le titre. */
+    [style*="grid-template-columns: minmax(0px, 1fr) auto"] {
+      grid-template-columns: 1fr !important;
+    }
+    [style*="grid-template-columns: minmax(0px, 1fr) auto"] > div:last-child {
+      display: none !important;
+    }
+
+    /* Barre du haut : on garde la marque et la recherche, rien d'autre. */
+    header > div:first-of-type > a > span:last-child,
+    header > div:first-of-type > div > span:first-child { display: none !important; }
+    header > div:first-of-type > a { flex: none !important; }
+    header > div:first-of-type > a > span { white-space: nowrap !important; }
+
+    /* Cibles tapables au pouce (44px). */
+    header button,
+    button[data-fab],
+    a[href*="discord.gg"],
+    a[href="#top"] {
+      min-height: 44px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+    }
+  }
+</style>
+
 <!-- React servi depuis le dépôt plutôt que depuis unpkg : si le CDN est
      injoignable, la page ne s'affiche pas du tout. Fichiers identiques
      (SRI vérifiés). __resources est le point de substitution de support.js. -->
@@ -379,7 +445,7 @@ class Component extends DCLogic {
   build() {
     const L = this.L, d = this.data;
     const opts = { accent: L.T.coral, muted: L.T.t2, strong: L.T.t1, inset: L.T.card, hair: L.T.hair };
-    const html = (s, extra) => React.createElement('div', { style: Object.assign({ color: L.T.t2, fontSize: '.98rem' }, extra || {}), dangerouslySetInnerHTML: { __html: s } });
+    const html = (s, extra) => React.createElement('div', { style: Object.assign({ color: L.T.t2, fontSize: '1.04rem' }, extra || {}), dangerouslySetInnerHTML: { __html: s } });
     const badge = s => {
       const m = L.SANCTIONS[s];
       if (!m) return null;
