@@ -37,6 +37,21 @@
      sommaire latéral. Le débordement du numéro de chapitre animé est
      déjà contenu par overflow-x:hidden sur <body>. */
 
+  /* Grand écran : la colonne de lecture était cadrée à gauche, filets
+     courant jusqu'au bord alors que le texte s'arrêtait bien avant.
+     On borne la colonne et on recentre le bloc sommaire + contenu. */
+  @media (min-width: 961px) {
+    [style*="grid-template-columns: auto minmax(0px, 1fr)"] {
+      grid-template-columns: auto minmax(0, 780px) !important;
+      justify-content: center !important;
+    }
+    /* « 21 juillet 2026 » ne tenait pas dans 6rem et cassait en deux. */
+    [style*="grid-template-columns: 6rem 4rem"] {
+      grid-template-columns: auto auto minmax(0, 1fr) !important;
+      column-gap: 22px !important;
+    }
+  }
+
   @media (max-width: 760px) {
     /* Accueil : une seule colonne — à deux, le titre était coupé. */
     [style*="grid-template-columns: minmax(0px, 1.35fr)"] {
@@ -200,7 +215,7 @@ a:hover{color:#F0BC8C}
       <div style="position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.14);aspect-ratio:4/3">
         <div style="{{ artStyle }}"></div>
       </div>
-      <p style="margin:.7rem 0 0;font-family:'Geist Mono',monospace;font-size:.64rem;letter-spacing:.12em;color:#6B7178;text-transform:uppercase">↳ {{ accroche }}</p>
+      <p style="margin:.9rem 0 0;font-size:.95rem;line-height:1.55;color:#9AA0A8">{{ accroche }}</p>
     </div>
   </div>
 </section>
@@ -275,17 +290,16 @@ a:hover{color:#F0BC8C}
   </main>
 </div>
 
-<div style="margin-top:clamp(50px,8vh,100px);border-top:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09);overflow:hidden;background:#0D0E11">
-  <div style="display:flex;width:max-content;animation:ticker 40s linear infinite reverse;padding:1.1rem 0;font-weight:700;font-size:clamp(1.6rem,5vw,3.4rem);letter-spacing:-.03em;text-transform:uppercase;white-space:nowrap;color:#1F2229">
-    <span>{{ marqueeBig }}</span><span>{{ marqueeBig }}</span>
-  </div>
-</div>
+<!-- Le bandeau défilant géant a été retiré : à 1,4:1 de contraste il
+     passait pour un défaut d'affichage, il répétait la devise que le
+     pied de page affiche juste en dessous, et il animait en continu. -->
+<div style="margin-top:clamp(50px,8vh,100px)"></div>
 
 <footer style="border-top:1px solid rgba(255,255,255,.09);background:#14161A">
   <div style="max-width:1440px;margin:0 auto;padding:clamp(28px,5vw,56px) clamp(14px,3vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;align-items:end">
     <div>
       <p style="margin:0;font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:-.035em;text-transform:uppercase;line-height:.95">{{ footDevise }}</p>
-      <p style="margin:.8rem 0 0;font-family:'Geist Mono',monospace;font-size:.68rem;letter-spacing:.12em;color:#6B7178">{{ footNote }}</p>
+      <p style="margin:.9rem 0 0;font-size:.92rem;line-height:1.55;color:#9AA0A8;max-width:52ch">{{ footNote }}</p>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:flex-end;font-family:'Geist Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase">
       <a href="{{ discord }}" target="_blank" rel="noopener" style="border:1px solid rgba(255,255,255,.14);padding:.5rem .9rem;border-radius:3px;color:#ECEAE6">Discord ↗</a>
