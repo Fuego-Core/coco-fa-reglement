@@ -33,8 +33,9 @@
      (« minmax(0px, 1fr) », avec espaces) : les sélecteurs ci-dessous
      visent la forme rendue, pas celle écrite dans le gabarit. -->
 <style>
-  /* Le grand numéro de chapitre dérive de ±56px et débordait de l'écran. */
-  html { overflow-x: clip; }
+  /* Pas d'overflow-x sur <html> : cela casserait le position:sticky du
+     sommaire latéral. Le débordement du numéro de chapitre animé est
+     déjà contenu par overflow-x:hidden sur <body>. */
 
   @media (max-width: 760px) {
     /* Accueil : une seule colonne — à deux, le titre était coupé. */
@@ -61,11 +62,21 @@
       padding-right: 2px !important;
     }
 
-    /* Journal des modifications : même principe. */
+    /* Journal : trois colonnes ne tiennent pas. Date et version sur une
+       ligne, description en dessous — la grille écrasait la version à 0. */
     [style*="grid-template-columns: 6rem 4rem"] {
-      grid-template-columns: auto minmax(0, 1fr) !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      align-items: baseline !important;
       gap: 2px 12px !important;
     }
+    [style*="grid-template-columns: 6rem 4rem"] > *:nth-child(3) {
+      flex: 1 0 100% !important;
+      margin-top: 4px !important;
+    }
+
+    /* Le bouton Sommaire flotte au-dessus du pied de page. */
+    footer > div { padding-bottom: 84px !important; }
 
     /* En-tête de chapitre : le grand numéro décoratif est purement
        ornemental, il vole de la place et pousse le titre. */
@@ -164,7 +175,7 @@ a:hover{color:#F0BC8C}
   <div style="height:1px;background:#1F2229"><div style="{{ progressStyle }}"></div></div>
   <div style="display:flex;align-items:center;gap:.9rem;height:34px;padding:0 clamp(14px,3vw,28px);border-top:1px solid rgba(255,255,255,.09);font-family:'Geist Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#9AA0A8;overflow:hidden">
     <span style="color:#1F7FD8">chapitre</span>
-    <span style="display:inline-block;height:1.6em;overflow:hidden;width:2ch;color:#E09A5A"><span style="{{ counterStyle }}"><sc-for list="{{ chapterNums }}" as="c" hint-placeholder-count="7"><span style="display:block;height:1.6em;line-height:1.6em">{{ c }}</span></sc-for></span></span>
+    <span style="display:inline-block;height:1.6em;overflow:hidden;width:2.7ch;color:#E09A5A"><span style="{{ counterStyle }}"><sc-for list="{{ chapterNums }}" as="c" hint-placeholder-count="7"><span style="display:block;height:1.6em;line-height:1.6em">{{ c }}</span></sc-for></span></span>
     <span style="color:#6B7178">|</span>
     <span style="display:inline-block;height:1.6em;overflow:hidden;flex:1;min-width:0"><span style="{{ counterStyle }}"><sc-for list="{{ chapterTitles }}" as="t" hint-placeholder-count="7"><span style="display:block;height:1.6em;line-height:1.6em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#ECEAE6">{{ t }}</span></sc-for></span></span>
   </div>
@@ -514,7 +525,7 @@ class Component extends DCLogic {
     }) : [];
     const lines = ['lecture de reglement.md', 'indexation des articles', 'compilation des sanctions', 'prêt'];
     const results = (this.index && s.q) ? this.L.searchIndex(this.index, s.q).map((it, i) => ({
-      href: '#' + it.anchor, num: it.num, title: it.title, cat: it.cat, snippet: it.body.slice(0, 140),
+      href: '#' + it.anchor, num: it.num, title: it.title, cat: it.cat, snippet: this.L.snippetFor(it, s.q, 150),
       liStyle: { animation: 'fadein .4s cubic-bezier(.22,1,.36,1) both', animationDelay: Math.min(i, 8) * 30 + 'ms' }
     })) : [];
     return {

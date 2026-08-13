@@ -157,15 +157,57 @@ export function buildIndex(data) {
     index.push({
       num: r.id, title: r.title, anchor: anchorOf(r.id),
       cat: (cat.num ? cat.num + '. ' : '') + cat.title, body: b,
-      n: deburr(r.title + ' ' + r.id + ' ' + b)
+      n: deburr(r.title + ' ' + r.id + ' ' + b),
+      nTitle: deburr(r.title), nBody: deburr(b), nNum: String(r.id)
     });
   }));
   return index;
 }
 
+// Extrait centré sur le mot cherché, coupé aux espaces plutôt qu'en plein mot.
+export function snippetFor(it, q, len) {
+  const max = len || 150, body = it.body || '';
+  const toks = deburr((q || '').trim()).split(/\s+/).filter(Boolean);
+  let pos = -1;
+  for (const t of toks) { const i = (it.nBody || '').indexOf(t); if (i !== -1) { pos = i; break; } }
+  if (pos === -1) {
+    if (body.length <= max) return body;
+    let cut = body.lastIndexOf(' ', max);
+    return body.slice(0, cut > 40 ? cut : max) + ' …';
+  }
+  let start = Math.max(0, pos - 55);
+  if (start > 0) { const sp = body.indexOf(' ', start); if (sp !== -1 && sp - start < 20) start = sp + 1; }
+  let end = Math.min(body.length, start + max);
+  if (end < body.length) { const sp = body.lastIndexOf(' ', end); if (sp > start + 40) end = sp; }
+  return (start > 0 ? '… ' : '') + body.slice(start, end).trim() + (end < body.length ? ' …' : '');
+}
+
+// Classement : le titre prime sur le corps, et un numéro tapé tel quel gagne.
 export function searchIndex(index, q) {
   const nq = deburr((q || '').trim());
   if (!nq) return [];
   const toks = nq.split(/\s+/).filter(Boolean);
-  return index.filter(it => toks.every(t => it.n.indexOf(t) !== -1)).slice(0, 20);
+  const scored = [];
+  index.forEach((it, ord) => {
+    if (!toks.every(t => it.n.indexOf(t) !== -1)) return;
+    let score = 0;
+    for (const t of toks) {
+      const num = it.nNum || '';
+      if (num === t) score += 200;
+      else if (num.indexOf(t) === 0) score += 120;
+      else if (num.indexOf(t) !== -1) score += 40;
+
+      const ti = (it.nTitle || '').indexOf(t);
+      if (ti === 0) score += 100;
+      else if (ti > 0) score += 70 - Math.min(ti, 30);
+      // mot entier dans le titre : on récompense « braquage » face à « braquages »
+      if (ti !== -1 && new RegExp('(^|[^a-z0-9])' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).test(it.nTitle || '')) score += 25;
+
+      const bi = (it.nBody || '').indexOf(t);
+      if (bi !== -1) score += 20 - Math.min(bi / 60, 15);
+    }
+    scored.push({ it, score, ord });
+  });
+  scored.sort((a, b) => b.score - a.score || a.ord - b.ord);
+  return scored.slice(0, 20).map(s => s.it);
 }
